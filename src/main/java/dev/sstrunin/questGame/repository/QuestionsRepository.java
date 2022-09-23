@@ -15,7 +15,7 @@ public class QuestionsRepository {
     public static final String WIN_GAME = "Поздравляю \n Ты выйграл.";
     public static final String LOSE_GAME = "Ты проиграл=(";
 
-    public void parseQuestion()  {
+    public void parseQuestion() {
         ObjectMapper objectMapper = new ObjectMapper();
         List<Question> result = null;
         File file;
@@ -23,13 +23,14 @@ public class QuestionsRepository {
         try {
             file = new File(getClass().getClassLoader().getResource("story.json").getFile());
             result = objectMapper.readValue(file,
-                    new TypeReference<List<Question>>() {});
-        }
-        catch (IOException e) {
+                    new TypeReference<List<Question>>() {
+                    });
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
         questions.addAll(result);
     }
+
     public List<Question> getQuestions() {
         if (questions.isEmpty()) {
             parseQuestion();
@@ -37,7 +38,7 @@ public class QuestionsRepository {
         return questions;
     }
 
-    public boolean isCorrectAnswer(int questId, int answer){
+    public boolean isCorrectAnswer(int questId, int answer) {
         return questions.get(questId).getRightAnswer() == answer;
     }
 }

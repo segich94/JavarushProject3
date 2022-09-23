@@ -30,10 +30,10 @@ public class QuestionServlet extends HttpServlet {
         int questionId = user.getLevel();
         Question question = questionsRepository.getQuestions().get(questionId);
         req.setAttribute("question", question.getQuestion());
-        req.setAttribute("answer1",question.getAnswer1());
+        req.setAttribute("answer1", question.getAnswer1());
         req.setAttribute("answer2", question.getAnswer2());
 
-        getServletContext().getRequestDispatcher("/question/question.jsp").forward(req,resp);
+        getServletContext().getRequestDispatcher("/question/question.jsp").forward(req, resp);
     }
 
     @Override
@@ -44,7 +44,7 @@ public class QuestionServlet extends HttpServlet {
         int questionId = user.getLevel();
         Question question = questionsRepository.getQuestions().get(questionId);
         req.setAttribute("question", question.getQuestion());
-        req.setAttribute("answer1",question.getAnswer1());
+        req.setAttribute("answer1", question.getAnswer1());
         req.setAttribute("answer2", question.getAnswer2());
 
 

@@ -21,7 +21,6 @@ public class InitServlet extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
         usersRepository = UsersRepository.getInstance();
         super.init(config);
-
     }
 
     @Override
@@ -32,18 +31,17 @@ public class InitServlet extends HttpServlet {
         System.out.println(username);
         User user;
         HttpSession session = req.getSession();
-        if (session.getAttribute("username")!=null){
+        if (session.getAttribute("username") != null) {
             resp.sendRedirect("question");
         }
 
-        if (usersRepository.isUsernameExist(username)){
+        if (usersRepository.isUsernameExist(username)) {
             user = usersRepository.getUserByName(username);
-        }
-        else {
+        } else {
             user = usersRepository.addUser(username);
         }
-        session.setAttribute("user",user);
-        req.setAttribute("user",user);
+        session.setAttribute("user", user);
+        req.setAttribute("user", user);
         resp.sendRedirect("question");
 
 

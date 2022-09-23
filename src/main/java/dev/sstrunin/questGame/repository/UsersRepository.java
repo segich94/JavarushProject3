@@ -9,25 +9,25 @@ public class UsersRepository {
 
     private HashMap<String, User> users;
 
-    public static UsersRepository getInstance(){
+    public static UsersRepository getInstance() {
         return instance;
     }
 
-    private UsersRepository(){
+    private UsersRepository() {
         users = new HashMap<>();
     }
 
-    public User addUser(String username){
+    public User addUser(String username) {
         User user = new User(username);
-        users.put(username,user);
+        users.put(username, user);
         return user;
     }
 
-    public boolean isUsernameExist(String name){
+    public boolean isUsernameExist(String name) {
         return users.containsKey(name);
     }
 
-    public User getUserByName(String username){
+    public User getUserByName(String username) {
         return users.get(username);
     }
 
